@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Dialéctica de la Ilustración — Historia de la Filosofía · IES Alquipir</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #FAF9F5;
+            --bg-secondary: #F0EDE6;
+            --bg-card: #FFFFFF;
+            --text-primary: #2D2B28;
+            --text-secondary: #6B6560;
+            --text-tertiary: #9B9590;
+            --accent: #D97757;
+            --accent-hover: #C4603F;
+            --accent-light: rgba(217, 119, 87, 0.08);
+            --blue-accent: #3B82B6;
+            --blue-light: rgba(59, 130, 182, 0.08);
+            --purple-accent: #7C5CBF;
+            --purple-light: rgba(124, 92, 191, 0.08);
+            --gold-accent: #B8860B;
+            --gold-light: rgba(184, 134, 11, 0.06);
+            --red-accent: #C0392B;
+            --red-light: rgba(192, 57, 43, 0.06);
+            --border: rgba(0, 0, 0, 0.06);
+            --border-hover: rgba(0, 0, 0, 0.12);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-lg: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+            font-size: 19px;
+        }
+
+        /* ── Top Bar ── */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250, 249, 245, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .topbar-logo {
+            font-family: 'Instrument Serif', serif;
+            font-size: 20px;
+            color: var(--accent);
+        }
+        .topbar-divider {
+            width: 1px;
+            height: 20px;
+            background: var(--border-hover);
+        }
+        .topbar-section {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .topbar-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-nav svg { width: 16px; height: 16px; }
+        .btn-back-main {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+        .btn-back-main:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+        .btn-home {
+            background: var(--bg-card);
+            color: var(--text-secondary);
+        }
+        .btn-home:hover {
+            border-color: var(--border-hover);
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 56px 24px 40px;
+            text-align: center;
+        }
+        .hero-overline {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--purple-accent);
+            margin-bottom: 16px;
+            padding: 6px 14px;
+            background: var(--purple-light);
+            border-radius: 20px;
+        }
+        .hero h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(30px, 5vw, 48px);
+            font-weight: 400;
+            line-height: 1.15;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: var(--purple-accent);
+        }
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ── Content ── */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 48px;
+        }
+
+        .section {
+            margin-bottom: 48px;
+        }
+        .section h2 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 30px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            line-height: 1.3;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+        .section h3 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 21px;
+            font-weight: 600;
+            margin: 28px 0 12px;
+            color: var(--text-primary);
+        }
+        .section p {
+            margin-bottom: 16px;
+            font-size: 19px;
+            line-height: 1.8;
+        }
+        .section ul, .section ol {
+            margin: 10px 0 18px 22px;
+            font-size: 19px;
+            line-height: 1.8;
+        }
+        .section li { margin-bottom: 8px; }
+
+        .quote-box {
+            background: var(--gold-light);
+            border-left: 4px solid var(--gold-accent);
+            padding: 20px 24px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 24px 0;
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            font-size: 21px;
+            line-height: 1.6;
+        }
+        .quote-box cite {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-style: normal;
+            font-size: 14px;
+            color: var(--text-tertiary);
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .highlight-box {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 24px 0;
+            font-size: 18px;
+        }
+
+        .concept-box {
+            background: var(--purple-light);
+            border-left: 4px solid var(--purple-accent);
+            padding: 20px 24px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 24px 0;
+            font-size: 18px;
+        }
+        .concept-box strong {
+            color: var(--purple-accent);
+        }
+
+        .warning-box {
+            background: var(--red-light);
+            border-left: 4px solid var(--red-accent);
+            padding: 20px 24px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 24px 0;
+            font-size: 18px;
+        }
+
+        /* ── Author Cards ── */
+        .author-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .author-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+        }
+        .author-card h4 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--purple-accent);
+            margin-bottom: 4px;
+        }
+        .author-card .dates {
+            font-size: 14px;
+            color: var(--text-tertiary);
+            margin-bottom: 10px;
+        }
+        .author-card p {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* ── Table ── */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 17px;
+        }
+        .comparison-table th {
+            background: var(--bg-secondary);
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            border-bottom: 2px solid var(--border);
+        }
+        .comparison-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            line-height: 1.6;
+        }
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ── Divider ── */
+        .divider {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 0 24px;
+        }
+        .divider-line {
+            border: none;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            padding: 32px 24px 40px;
+            font-size: 14px;
+            color: var(--text-tertiary);
+            border-top: 1px solid var(--border);
+        }
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .footer a:hover { text-decoration: underline; }
+        .footer-phi {
+            font-family: 'Instrument Serif', serif;
+            font-size: 28px;
+            color: var(--accent);
+            opacity: 0.35;
+            margin-bottom: 8px;
+        }
+
+        /* ── Animations ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            body { font-size: 17px; }
+            .hero { padding: 40px 16px 32px; }
+            .hero h1 { font-size: 26px; }
+            .content { padding: 0 16px 40px; }
+            .section p, .section ul, .section ol { font-size: 17px; }
+            .topbar { padding: 10px 12px; }
+            .topbar-section { display: none; }
+            .btn-nav { padding: 6px 10px; font-size: 12px; }
+            .author-cards { grid-template-columns: 1fr; }
+            .comparison-table { font-size: 15px; }
+            .comparison-table th, .comparison-table td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── Top Bar ── -->
+<header class="topbar">
+    <div class="topbar-left">
+        <span class="topbar-logo">φ</span>
+        <div class="topbar-divider"></div>
+        <span class="topbar-section">Ampliación de contenidos</span>
+    </div>
+    <div class="topbar-actions">
+        <a class="btn-nav btn-back-main" href="proyecto-ilustrado.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Volver al proyecto ilustrado
+        </a>
+        <a class="btn-nav btn-home" href="https://pacofilo.github.io/filoalquipir/" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Inicio
+        </a>
+    </div>
+</header>
+
+<!-- ── Hero ── -->
+<section class="hero">
+    <span class="hero-overline">Escuela de Frankfurt · Teoría Crítica</span>
+    <h1><em>Dialéctica de la Ilustración</em><br>Horkheimer y Adorno</h1>
+    <p class="hero-subtitle">Una de las críticas más profundas al proyecto ilustrado: cómo la razón emancipadora puede convertirse en instrumento de dominación.</p>
+</section>
+
+<!-- ── Intro Quote ── -->
+<div class="content">
+    <div class="quote-box reveal">
+        «El mito es ya Ilustración; la Ilustración recae en mitología.»
+        <cite>— Max Horkheimer y Theodor W. Adorno, <em>Dialéctica de la Ilustración</em> (1944)</cite>
+    </div>
+</div>
+
+<!-- ── Content ── -->
+<div class="content">
+
+    <!-- SECTION 1 -->
+    <div class="section reveal">
+        <h2>1. Contexto: la Escuela de Frankfurt y la Teoría Crítica</h2>
+
+        <p>La <strong>Escuela de Frankfurt</strong> es el nombre con que se conoce al grupo de intelectuales vinculados al <em>Instituto de Investigación Social</em> (Institut für Sozialforschung), fundado en Frankfurt en 1923. Su propósito era desarrollar una <strong>teoría crítica de la sociedad</strong> que combinase el análisis marxista de las estructuras económicas con la reflexión filosófica, psicológica y cultural.</p>
+
+        <p>Los miembros principales de la primera generación son <strong>Max Horkheimer</strong> (director del Instituto desde 1930), <strong>Theodor W. Adorno</strong>, <strong>Herbert Marcuse</strong>, <strong>Walter Benjamin</strong>, <strong>Erich Fromm</strong> y <strong>Friedrich Pollock</strong>. Todos ellos eran de origen judío, y la llegada del nazismo al poder en 1933 les obligó a exiliarse: primero a Ginebra, después a París y finalmente a Estados Unidos (Nueva York y Los Ángeles).</p>
+
+        <p>Es precisamente en el exilio estadounidense, en plena Segunda Guerra Mundial, cuando Horkheimer y Adorno escriben la <em>Dialéctica de la Ilustración</em> (publicada en 1944, edición definitiva en 1947). La obra nace de una pregunta urgente: <strong>¿cómo ha sido posible que la civilización más «ilustrada» y «racional» de Europa —Alemania— haya producido Auschwitz?</strong></p>
+
+        <div class="highlight-box">
+            <strong>Pregunta de fondo:</strong> Si la Ilustración prometía emancipación mediante la razón, ¿por qué el siglo XX —heredero directo de la Ilustración— ha sido el más violento y destructivo de la historia humana?
+        </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section reveal">
+        <h2>2. Los autores</h2>
+
+        <div class="author-cards">
+            <div class="author-card">
+                <h4>Max Horkheimer</h4>
+                <p class="dates">1895, Stuttgart — 1973, Núremberg</p>
+                <p>Filósofo y sociólogo alemán, director del Instituto de Investigación Social. Acuñó el concepto de <strong>«teoría crítica»</strong> para distinguir una filosofía social que no se limita a describir la realidad, sino que la cuestiona con el objetivo de transformarla. En <em>Crítica de la razón instrumental</em> (1947) profundiza en la distinción entre <strong>razón objetiva</strong> (que se ocupa de los fines: ¿qué es lo justo? ¿qué es lo bueno?) y <strong>razón subjetiva o instrumental</strong> (que solo calcula medios eficaces para cualquier fin dado). Para Horkheimer, la modernidad ha reducido toda razón a razón instrumental, vaciándola de contenido ético.</p>
+            </div>
+            <div class="author-card">
+                <h4>Theodor W. Adorno</h4>
+                <p class="dates">1903, Frankfurt — 1969, Visp (Suiza)</p>
+                <p>Filósofo, sociólogo, musicólogo y crítico cultural. Es uno de los pensadores más influyentes del siglo XX. Su obra abarca la filosofía (<em>Dialéctica negativa</em>, 1966), la estética (<em>Teoría estética</em>, 1970), la sociología de la música y la crítica de la cultura de masas. Adorno sostiene que el pensamiento filosófico genuino es necesariamente <strong>«negativo»</strong>: debe resistirse a toda síntesis totalizadora y mantener viva la contradicción. Es célebre su afirmación de que «escribir poesía después de Auschwitz es un acto de barbarie», con la que señala que la barbarie ha contaminado toda la cultura.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section reveal">
+        <h2>3. La tesis central: la autodestrucción de la Ilustración</h2>
+
+        <p>La tesis fundamental de la <em>Dialéctica de la Ilustración</em> puede formularse así:</p>
+
+        <div class="concept-box">
+            <strong>Tesis:</strong> La Ilustración, que nació para liberar al ser humano del mito, la superstición y el miedo a la naturaleza, ha acabado produciendo un nuevo tipo de dominación — y, en último término, una nueva forma de mito. La razón que prometía emancipación se ha convertido en instrumento de control, sometimiento y destrucción.
+        </div>
+
+        <p>Esta tesis se desarrolla en dos direcciones complementarias:</p>
+
+        <h3>a) El mito ya es Ilustración</h3>
+        <p>Los mitos antiguos (la mitología griega, los relatos cosmogónicos) no eran irracionales sin más: ya contenían un intento de <strong>explicar y dominar la naturaleza</strong>, de reducir lo desconocido a lo conocido, de poner orden en el caos. En ese sentido, el mito era ya una forma primitiva de Ilustración: una manera de controlar el mundo mediante el relato. Los mitos clasifican, organizan, dan nombres a las fuerzas naturales y las someten a un orden narrativo.</p>
+
+        <h3>b) La Ilustración recae en mito</h3>
+        <p>Inversamente, la Ilustración moderna, al pretender dominar completamente la naturaleza mediante la ciencia y la técnica, <strong>se convierte ella misma en un nuevo mito</strong>: el mito del progreso ilimitado, de la dominación total, de la racionalidad absoluta. La razón ilustrada, que se proponía «desencantuar el mundo» (Max Weber), acaba «reencantándolo» con una nueva fe ciega: la fe en la ciencia, la técnica y el cálculo como respuesta a todos los problemas humanos.</p>
+
+        <div class="quote-box">
+            «La Ilustración, en el más amplio sentido de pensamiento en continuo progreso, ha perseguido desde siempre el objetivo de liberar a los hombres del miedo y constituirlos en señores. Pero la tierra enteramente ilustrada resplandece bajo el signo de una calamidad triunfal.»
+            <cite>— Horkheimer y Adorno, <em>Dialéctica de la Ilustración</em>, Prólogo</cite>
+        </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="section reveal">
+        <h2>4. Concepto clave: la razón instrumental</h2>
+
+        <p>El concepto más importante de la obra es el de <strong>razón instrumental</strong> (<em>instrumentelle Vernunft</em>). Horkheimer y Adorno distinguen entre dos formas de racionalidad:</p>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Razón sustantiva / objetiva</th>
+                    <th>Razón instrumental / subjetiva</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Se ocupa de los <strong>fines</strong>: ¿qué es lo justo? ¿Qué merece la pena? ¿Cuál es el sentido de la vida buena?</td>
+                    <td>Se ocupa solo de los <strong>medios</strong>: ¿cuál es la manera más eficaz de conseguir un objetivo dado?</td>
+                </tr>
+                <tr>
+                    <td>Evalúa los objetivos según criterios éticos, políticos y humanos.</td>
+                    <td>Es indiferente a la cualidad de los fines: sirve igual para curar enfermedades que para fabricar armas.</td>
+                </tr>
+                <tr>
+                    <td>Pregunta: «¿Es bueno lo que hacemos?»</td>
+                    <td>Pregunta: «¿Cómo hacerlo más eficazmente?»</td>
+                </tr>
+                <tr>
+                    <td>Presente en la filosofía griega (Platón, Aristóteles) y en parte de la Ilustración (Kant, Rousseau).</td>
+                    <td>Triunfa con el positivismo, la ciencia moderna y la organización industrial de la sociedad.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Según Horkheimer y Adorno, la modernidad ha liquidado progresivamente la <strong>razón sustantiva</strong> y ha reducido toda racionalidad a <strong>razón instrumental</strong>. El resultado es una civilización técnicamente poderosa pero éticamente vacía: capaz de llegar a la Luna pero incapaz de responder a la pregunta «¿para qué?».</p>
+
+        <div class="warning-box">
+            <strong>Consecuencia extrema:</strong> Un campo de exterminio como Auschwitz es una maquinaria «racional» en sentido instrumental: organización eficiente, logística calculada, tecnología aplicada. Lo que falta es la pregunta por el fin: ¿es esto humanamente legítimo? La razón instrumental, al prescindir de toda reflexión ética, puede servir tanto para liberar como para aniquilar.
+        </div>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="section reveal">
+        <h2>5. Dominio de la naturaleza y dominio del ser humano</h2>
+
+        <p>Para Horkheimer y Adorno, la Ilustración define su relación con el mundo como <strong>dominio</strong>: conocer es dominar, saber es poder (como ya había formulado Francis Bacon en el siglo XVII: <em>scientia est potentia</em>). La ciencia moderna conoce la naturaleza para controlarla, predecirla y explotarla. En este sentido, el saber ilustrado es esencialmente un saber de <strong>dominación</strong>.</p>
+
+        <p>Pero este impulso de dominación no se detiene en la naturaleza exterior. Progresivamente se extiende a:</p>
+
+        <ul>
+            <li><strong>La naturaleza interior del ser humano:</strong> la represión de los instintos, las emociones y los deseos. La civilización exige que el individuo reprima su naturaleza interna para adaptarse a las exigencias del trabajo y la producción. El cuerpo y la sensibilidad son sometidos a la disciplina racional.</li>
+            <li><strong>Los otros seres humanos:</strong> la lógica del dominio se traslada a las relaciones sociales. Los sistemas económicos y políticos modernos organizan la sociedad como una gran maquinaria donde cada individuo es una pieza intercambiable.</li>
+            <li><strong>Pueblos y culturas enteros:</strong> el colonialismo y el imperialismo son la extensión del dominio racional a escala planetaria. La «civilización» se impone por la fuerza a quienes son considerados «primitivos» o «irracionales».</li>
+        </ul>
+
+        <div class="quote-box">
+            «Lo que los hombres quieren aprender de la naturaleza es servirse de ella para dominarla por completo, a ella y a los hombres. Ninguna otra cosa cuenta.»
+            <cite>— Horkheimer y Adorno, <em>Dialéctica de la Ilustración</em></cite>
+        </div>
+    </div>
+
+    <!-- SECTION 6 -->
+    <div class="section reveal">
+        <h2>6. La industria cultural</h2>
+
+        <p>Uno de los capítulos más influyentes de la <em>Dialéctica de la Ilustración</em> es el dedicado a la <strong>«industria cultural»</strong> (<em>Kulturindustrie</em>). Horkheimer y Adorno analizan cómo la cultura moderna (cine, radio, publicidad, música popular, revistas) se ha convertido en una <strong>industria de masas</strong> que reproduce la lógica de la dominación.</p>
+
+        <h3>Características de la industria cultural:</h3>
+        <ul>
+            <li><strong>Estandarización:</strong> los productos culturales (películas, canciones, series) siguen fórmulas repetitivas que crean una ilusión de novedad sin auténtica originalidad. Todo parece diferente, pero en el fondo es lo mismo.</li>
+            <li><strong>Mercantilización:</strong> la cultura se produce y distribuye como una mercancía más, sometida a la lógica del beneficio. El valor de una obra ya no se mide por su calidad artística, sino por su rentabilidad comercial.</li>
+            <li><strong>Conformismo:</strong> la industria cultural no libera ni educa: <strong>adapta</strong> al individuo al sistema existente. Produce un ocio que no es verdadero descanso ni creatividad, sino una prolongación del trabajo: el espectador consume pasivamente contenidos diseñados para que no piense.</li>
+            <li><strong>Pseudoindividualización:</strong> se ofrece la apariencia de libertad de elección (puedes elegir entre mil productos), pero todas las opciones reproducen los mismos valores y estructuras. La «personalización» es superficial: en el fondo, todos consumen lo mismo.</li>
+        </ul>
+
+        <div class="concept-box">
+            <strong>Idea fundamental:</strong> La industria cultural es la Ilustración como «engaño de masas» (<em>Massenbetrug</em>). Promete emancipación y entretenimiento, pero en realidad produce sumisión y conformidad. El individuo cree que elige libremente, pero sus gustos, deseos y opiniones han sido prefabricados por la industria.
+        </div>
+
+        <p>Este análisis anticipó debates que hoy son más actuales que nunca: la homogeneización de la cultura global, el poder de las plataformas digitales, los algoritmos que moldean nuestros gustos, y la economía de la atención.</p>
+    </div>
+
+    <!-- SECTION 7 -->
+    <div class="section reveal">
+        <h2>7. El excursus sobre Odiseo: mito y razón</h2>
+
+        <p>Uno de los pasajes más célebres de la obra es la interpretación del episodio de las <strong>Sirenas</strong> en la <em>Odisea</em> de Homero. Para Horkheimer y Adorno, Odiseo es el <strong>prototipo del sujeto ilustrado</strong>: aquel que sobrevive dominando la naturaleza (el mar, los monstruos, las tentaciones) mediante la astucia y la renuncia.</p>
+
+        <p>Cuando Odiseo ordena a sus marineros que le aten al mástil para poder oír el canto de las Sirenas sin sucumbir a él, está realizando un acto paradigmático de la razón ilustrada:</p>
+
+        <ul>
+            <li><strong>Domina la naturaleza exterior</strong> (las Sirenas, la tentación) mediante un cálculo racional (atarse, tapar los oídos de los remeros con cera).</li>
+            <li><strong>Reprime su naturaleza interior</strong> (su deseo de abandonarse al placer del canto) mediante la disciplina y la renuncia.</li>
+            <li><strong>Paga un precio:</strong> puede escuchar el canto, pero no gozar de él. Experimenta la belleza como mero <strong>espectáculo</strong>, no como experiencia vivida. Es el primer «espectador» de la cultura: ve y oye, pero no puede participar.</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>Interpretación:</strong> Odiseo es el modelo del sujeto moderno: sobrevive, progresa, se enriquece, pero a costa de reprimir su vida interior y reducir la experiencia a cálculo. La «astucia de la razón» es también su empobrecimiento: ganar el mundo al precio de perder el alma.
+        </div>
+    </div>
+
+    <!-- SECTION 8 -->
+    <div class="section reveal">
+        <h2>8. ¿Una crítica sin salida? El problema de la aporía</h2>
+
+        <p>La <em>Dialéctica de la Ilustración</em> ha sido objeto de una crítica frecuente: si la razón misma está comprometida con la dominación, <strong>¿desde dónde se puede criticar?</strong> Si todo pensamiento racional es potencialmente instrumental, ¿no es la propia crítica de Horkheimer y Adorno un producto más de esa razón que denuncian?</p>
+
+        <p>Los autores son conscientes de esta <strong>aporía</strong> (paradoja sin solución fácil). Su respuesta es doble:</p>
+
+        <ul>
+            <li><strong>Pensamiento negativo:</strong> la filosofía no puede ofrecer una «solución positiva» (un modelo de sociedad perfecta), pero sí puede mantener viva la <strong>conciencia de lo que falta</strong>, de lo que ha sido destruido, de las promesas incumplidas de la Ilustración. Pensar es resistir.</li>
+            <li><strong>El arte auténtico</strong> como refugio: frente a la industria cultural, el arte genuino (Adorno piensa sobre todo en la música de Schönberg y la literatura de Beckett y Kafka) es capaz de expresar el sufrimiento y la contradicción sin resolverlos falsamente. El arte no ofrece consuelo, pero mantiene viva la experiencia de lo diferente.</li>
+        </ul>
+
+        <div class="quote-box">
+            «La única filosofía de la que aún se puede responder ante la desesperación es el intento de contemplar todas las cosas tal como se presentan desde el punto de vista de la redención.»
+            <cite>— T. W. Adorno, <em>Minima Moralia</em> (1951)</cite>
+        </div>
+    </div>
+
+    <!-- SECTION 9 -->
+    <div class="section reveal">
+        <h2>9. Vigencia y críticas posteriores</h2>
+
+        <h3>¿Qué aporta hoy la Dialéctica de la Ilustración?</h3>
+        <ul>
+            <li><strong>Crisis ecológica:</strong> la idea de que el dominio ilimitado de la naturaleza acaba destruyéndola es hoy más evidente que nunca. El cambio climático, la pérdida de biodiversidad y la contaminación son consecuencias de una razón instrumental aplicada sin límites éticos a la explotación de los recursos naturales.</li>
+            <li><strong>Redes sociales y algoritmos:</strong> la industria cultural descrita por Horkheimer y Adorno se ha multiplicado con las plataformas digitales. Los algoritmos de recomendación, las burbujas de filtro y la economía de la atención reproducen la lógica de la pseudoindividualización a una escala inimaginable en 1944.</li>
+            <li><strong>Posverdad y populismos:</strong> la «recaída en el mito» adquiere nuevas formas en la desinformación, las teorías conspirativas y los discursos irracionalistas que proliferan precisamente en las sociedades tecnológicamente más avanzadas.</li>
+            <li><strong>Inteligencia artificial:</strong> la IA es quizá el ejemplo más puro de razón instrumental: sistemas capaces de realizar tareas complejas con una eficacia sin precedentes, pero incapaces de preguntarse por el sentido o la legitimidad de lo que hacen.</li>
+        </ul>
+
+        <h3>Principales críticas a la obra</h3>
+        <ul>
+            <li><strong>Jürgen Habermas</strong> (segunda generación de la Escuela de Frankfurt): acepta la crítica a la razón instrumental, pero defiende que existe otra dimensión de la razón —la <strong>razón comunicativa</strong>— que no se reduce al cálculo y que puede fundamentar un proyecto emancipador. La modernidad no debe abandonarse, sino completarse.</li>
+            <li><strong>Karl Popper y los positivistas:</strong> consideran que la crítica de Horkheimer y Adorno es demasiado vaga y carece de rigor empírico. Critican su tono apocalíptico y la falta de alternativas concretas.</li>
+            <li><strong>Crítica poscolonial y feminista:</strong> señala que Horkheimer y Adorno, pese a su radicalidad, mantienen un marco eurocéntrico: su análisis se centra en la «civilización occidental» sin cuestionar suficientemente cómo la razón ilustrada se ha usado para justificar el colonialismo y la exclusión de las mujeres.</li>
+        </ul>
+    </div>
+
+    <!-- SECTION 10 -->
+    <div class="section reveal">
+        <h2>10. Conceptos clave para el examen y el debate</h2>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Concepto</th>
+                    <th>Definición</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Dialéctica de la Ilustración</strong></td>
+                    <td>Proceso por el cual la razón ilustrada, al pretender liberar al ser humano del mito, acaba produciendo una nueva forma de mito y de dominación.</td>
+                </tr>
+                <tr>
+                    <td><strong>Razón instrumental</strong></td>
+                    <td>Forma de racionalidad reducida al cálculo de medios eficaces, indiferente a los fines éticos. Se opone a la razón sustantiva u objetiva.</td>
+                </tr>
+                <tr>
+                    <td><strong>Industria cultural</strong></td>
+                    <td>Sistema de producción industrial de cultura de masas que estandariza los productos culturales y fomenta la pasividad y el conformismo.</td>
+                </tr>
+                <tr>
+                    <td><strong>Desencantamiento del mundo</strong></td>
+                    <td>Concepto de Max Weber: proceso por el cual la ciencia y la racionalización eliminan la magia, la religión y el misterio como explicaciones del mundo.</td>
+                </tr>
+                <tr>
+                    <td><strong>Pseudoindividualización</strong></td>
+                    <td>Apariencia de libertad de elección y diversidad dentro de un sistema que, en el fondo, produce conformidad y homogeneidad.</td>
+                </tr>
+                <tr>
+                    <td><strong>Teoría Crítica</strong></td>
+                    <td>Corriente filosófica que no se limita a describir la realidad social, sino que la analiza críticamente para identificar estructuras de dominación y señalar posibilidades de emancipación.</td>
+                </tr>
+                <tr>
+                    <td><strong>Dialéctica negativa</strong></td>
+                    <td>Método filosófico de Adorno que se resiste a toda síntesis totalizadora y mantiene viva la contradicción como expresión de una realidad no reconciliada.</td>
+                </tr>
+                <tr>
+                    <td><strong>Razón comunicativa</strong></td>
+                    <td>Concepto de Habermas: dimensión de la razón orientada al entendimiento mutuo mediante el diálogo, que no se reduce al cálculo instrumental.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- FINAL REFLECTION -->
+    <div class="section reveal">
+        <div class="highlight-box">
+            <strong>Reflexión final para el foro:</strong> La <em>Dialéctica de la Ilustración</em> no propone abandonar la razón ni volver al mito. Lo que exige es una <strong>razón que se piense a sí misma</strong>, que sea capaz de reconocer sus propias tendencias destructivas y de resistirse a ellas. La pregunta sigue abierta: ¿es posible una razón que libere sin dominar? ¿Podemos ser herederos de la Ilustración sin repetir sus errores?
+        </div>
+    </div>
+
+</div><!-- /content -->
+
+<!-- ── Footer ── -->
+<div class="divider"><hr class="divider-line"></div>
+<footer class="footer">
+    <div class="footer-phi">φ</div>
+    <p>Departamento de Filosofía · <a href="https://pacofilo.github.io/filoalquipir/" target="_blank">IES Alquipir</a> · Cehegín, Murcia<br>Francisco Jiménez Amor</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

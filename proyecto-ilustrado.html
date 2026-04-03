@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El proyecto ilustrado — Historia de la Filosofía · IES Alquipir</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #FAF9F5;
+            --bg-secondary: #F0EDE6;
+            --bg-card: #FFFFFF;
+            --text-primary: #2D2B28;
+            --text-secondary: #6B6560;
+            --text-tertiary: #9B9590;
+            --accent: #D97757;
+            --accent-hover: #C4603F;
+            --accent-light: rgba(217, 119, 87, 0.08);
+            --accent-light-hover: rgba(217, 119, 87, 0.14);
+            --blue-accent: #3B82B6;
+            --blue-light: rgba(59, 130, 182, 0.08);
+            --green-accent: #4A9D6E;
+            --green-light: rgba(74, 157, 110, 0.08);
+            --purple-accent: #7C5CBF;
+            --purple-light: rgba(124, 92, 191, 0.08);
+            --gold-accent: #B8860B;
+            --gold-light: rgba(184, 134, 11, 0.06);
+            --border: rgba(0, 0, 0, 0.06);
+            --border-hover: rgba(0, 0, 0, 0.12);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-lg: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+            --shadow-xl: 0 8px 32px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.06);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-lg: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.75;
+            min-height: 100vh;
+            font-size: 19px;
+        }
+
+        /* ═══════════════════════════════════════════
+           TOP NAV BAR
+        ═══════════════════════════════════════════ */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250, 249, 245, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .topbar-logo {
+            font-family: 'Instrument Serif', serif;
+            font-size: 20px;
+            color: var(--accent);
+            letter-spacing: -0.5px;
+        }
+        .topbar-divider {
+            width: 1px;
+            height: 20px;
+            background: var(--border-hover);
+        }
+        .topbar-section {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn-home:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+        .btn-home svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ═══════════════════════════════════════════
+           HERO
+        ═══════════════════════════════════════════ */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 56px 24px 40px;
+            text-align: center;
+        }
+        .hero-overline {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            padding: 6px 14px;
+            background: var(--accent-light);
+            border-radius: 20px;
+        }
+        .hero h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(32px, 5.5vw, 52px);
+            font-weight: 400;
+            line-height: 1.15;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 28px;
+            line-height: 1.6;
+        }
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ═══════════════════════════════════════════
+           INTRO QUOTE
+        ═══════════════════════════════════════════ */
+        .intro-quote {
+            max-width: 1200px;
+            margin: 0 auto 48px;
+            padding: 28px 32px;
+            background: var(--gold-light);
+            border-left: 4px solid var(--gold-accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            font-family: 'Instrument Serif', serif;
+            font-size: 22px;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .intro-quote cite {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-style: normal;
+            font-size: 14px;
+            color: var(--text-tertiary);
+            margin-top: 12px;
+            font-weight: 500;
+        }
+
+        /* ═══════════════════════════════════════════
+           CONTENT SECTIONS
+        ═══════════════════════════════════════════ */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 48px;
+        }
+
+        .section-block {
+            margin-bottom: 48px;
+        }
+        .section-block-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .section-number {
+            font-family: 'Instrument Serif', serif;
+            font-size: 32px;
+            color: var(--accent);
+            opacity: 0.5;
+            line-height: 1;
+            min-width: 32px;
+        }
+        .section-label h2 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+        .section-label .overline {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+
+        .text-content {
+            font-size: 19px;
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+        .text-content p {
+            margin-bottom: 16px;
+        }
+        .text-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* ═══════════════════════════════════════════
+           CARDS GRID — Buttons that open modals
+        ═══════════════════════════════════════════ */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+        .card-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            font-family: inherit;
+        }
+        .card-btn:hover {
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        .card-btn .card-icon {
+            font-size: 28px;
+            margin-bottom: 4px;
+        }
+        .card-btn .card-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 20px;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+        .card-btn .card-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .card-btn .card-arrow {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 18px;
+            color: var(--accent);
+            transition: transform 0.2s;
+        }
+        .card-btn:hover .card-arrow {
+            transform: translateX(3px);
+        }
+
+        /* Card color variants */
+        .card-btn.blue { border-left: 3px solid var(--blue-accent); }
+        .card-btn.blue:hover { background: var(--blue-light); }
+        .card-btn.green { border-left: 3px solid var(--green-accent); }
+        .card-btn.green:hover { background: var(--green-light); }
+        .card-btn.purple { border-left: 3px solid var(--purple-accent); }
+        .card-btn.purple:hover { background: var(--purple-light); }
+        .card-btn.gold { border-left: 3px solid var(--gold-accent); }
+        .card-btn.gold:hover { background: var(--gold-light); }
+        .card-btn.accent { border-left: 3px solid var(--accent); }
+        .card-btn.accent:hover { background: var(--accent-light); }
+
+        /* ═══════════════════════════════════════════
+           MODAL / OVERLAY
+        ═══════════════════════════════════════════ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 500;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-box {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            max-width: 920px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .modal-box.fullscreen {
+            max-width: 100%;
+            max-height: 100%;
+            height: 100vh;
+            border-radius: 0;
+        }
+        .modal-topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 24px;
+            background: rgba(250, 249, 245, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+        .modal-topbar-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 18px;
+            color: var(--text-primary);
+        }
+        .modal-topbar-actions {
+            display: flex;
+            gap: 8px;
+        }
+        .btn-modal-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .btn-modal-action:hover {
+            border-color: var(--border-hover);
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+        }
+        .btn-modal-action svg {
+            width: 18px;
+            height: 18px;
+        }
+        .modal-content {
+            padding: 32px;
+        }
+        .modal-content h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+        .modal-content h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 19px;
+            font-weight: 600;
+            margin: 24px 0 10px;
+            color: var(--text-primary);
+        }
+        .modal-content p {
+            margin-bottom: 14px;
+            font-size: 19px;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+        .modal-content ul, .modal-content ol {
+            margin: 10px 0 18px 20px;
+            font-size: 19px;
+            line-height: 1.8;
+        }
+        .modal-content li {
+            margin-bottom: 6px;
+        }
+        .modal-content .highlight-box {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin: 18px 0;
+            font-size: 18px;
+        }
+        .modal-content .quote-box {
+            background: var(--gold-light);
+            border-left: 3px solid var(--gold-accent);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin: 18px 0;
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+        .modal-content .quote-box cite {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-style: normal;
+            font-size: 14px;
+            color: var(--text-tertiary);
+            margin-top: 8px;
+        }
+        .modal-content .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            margin: 16px 0 20px;
+        }
+        .modal-content .concept-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+        }
+        .modal-content .concept-item strong {
+            display: block;
+            font-size: 17px;
+            margin-bottom: 4px;
+            color: var(--accent);
+        }
+        .modal-content .concept-item span {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .modal-content .thinker-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin: 14px 0;
+        }
+        .modal-content .thinker-card h4 {
+            margin-top: 0;
+            color: var(--accent);
+        }
+        .modal-content .thinker-card .dates {
+            font-size: 14px;
+            color: var(--text-tertiary);
+            margin-bottom: 8px;
+        }
+        .modal-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+        .modal-content th {
+            background: var(--bg-secondary);
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            border-bottom: 2px solid var(--border);
+        }
+        .modal-content td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        /* ═══════════════════════════════════════════
+           FULL PAGE OVERLAY (sub-pages)
+        ═══════════════════════════════════════════ */
+        .page-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 400;
+            background: var(--bg-primary);
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .page-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+        .page-topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            background: rgba(250, 249, 245, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+        .page-topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .btn-back:hover {
+            border-color: var(--border-hover);
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+        }
+        .btn-back svg {
+            width: 16px;
+            height: 16px;
+        }
+        .page-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 24px 60px;
+        }
+        .page-content h2 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        .page-content h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 26px;
+            font-weight: 400;
+            margin: 32px 0 14px;
+            color: var(--text-primary);
+        }
+        .page-content h4 {
+            font-size: 19px;
+            font-weight: 600;
+            margin: 24px 0 10px;
+        }
+        .page-content p {
+            margin-bottom: 14px;
+            font-size: 19px;
+            line-height: 1.8;
+        }
+        .page-content ul, .page-content ol {
+            margin: 10px 0 18px 22px;
+            font-size: 19px;
+            line-height: 1.8;
+        }
+        .page-content li { margin-bottom: 6px; }
+        .page-content .highlight-box {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin: 18px 0;
+        }
+        .page-content .quote-box {
+            background: var(--gold-light);
+            border-left: 3px solid var(--gold-accent);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin: 18px 0;
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+        .page-content .quote-box cite {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-style: normal;
+            font-size: 14px;
+            color: var(--text-tertiary);
+            margin-top: 8px;
+        }
+        .page-content .thinker-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin: 14px 0;
+        }
+        .page-content .thinker-card h4 {
+            margin-top: 0;
+            color: var(--accent);
+        }
+        .page-content .thinker-card .dates {
+            font-size: 14px;
+            color: var(--text-tertiary);
+            margin-bottom: 8px;
+        }
+        .page-content .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            margin: 16px 0 20px;
+        }
+        .page-content .concept-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+        }
+        .page-content .concept-item strong {
+            display: block;
+            font-size: 17px;
+            margin-bottom: 4px;
+            color: var(--accent);
+        }
+        .page-content .concept-item span {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════
+           KIALO / FORO SECTION
+        ═══════════════════════════════════════════ */
+        .foro-section {
+            max-width: 1200px;
+            margin: 0 auto 48px;
+            padding: 0 24px;
+        }
+        .foro-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .foro-card-image {
+            flex: 0 0 auto;
+        }
+        .foro-card-image img {
+            height: 60px;
+            display: block;
+        }
+        .foro-card-text {
+            flex: 1;
+            min-width: 240px;
+        }
+        .foro-card-text h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+        .foro-card-text p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .foro-card-text .step-list {
+            list-style: none;
+            margin: 0 0 20px;
+            padding: 0;
+        }
+        .foro-card-text .step-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 17px;
+            color: var(--text-secondary);
+        }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .btn-classroom {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #1a73e8;
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn-classroom:hover {
+            background: #1557b0;
+            transform: translateY(-1px);
+        }
+        .btn-classroom svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ═══════════════════════════════════════════
+           DIVIDER
+        ═══════════════════════════════════════════ */
+        .divider {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 0 24px;
+        }
+        .divider-line {
+            border: none;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ═══════════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════════ */
+        .footer {
+            text-align: center;
+            padding: 32px 24px 40px;
+            font-size: 13px;
+            color: var(--text-tertiary);
+            border-top: 1px solid var(--border);
+        }
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer-phi {
+            font-family: 'Instrument Serif', serif;
+            font-size: 28px;
+            color: var(--accent);
+            opacity: 0.35;
+            margin-bottom: 8px;
+        }
+
+        /* ═══════════════════════════════════════════
+           AMPLIAR BUTTON
+        ═══════════════════════════════════════════ */
+        .btn-ampliar {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            background: var(--purple-accent);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+            margin-top: 12px;
+        }
+        .btn-ampliar:hover {
+            background: #6A4DAE;
+            transform: translateY(-1px);
+        }
+        .btn-ampliar svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ═══════════════════════════════════════════
+           ANIMATIONS
+        ═══════════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════ */
+        @media (max-width: 640px) {
+            body { font-size: 17px; }
+            .hero { padding: 40px 16px 32px; }
+            .hero h1 { font-size: 28px; }
+            .content { padding: 0 16px 40px; }
+            .modal-content { padding: 24px 18px; }
+            .modal-content p, .modal-content ul, .modal-content ol { font-size: 17px; }
+            .page-content { padding: 28px 16px 48px; }
+            .page-content p, .page-content ul, .page-content ol { font-size: 17px; }
+            .foro-card { padding: 24px; flex-direction: column; align-items: flex-start; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .topbar { padding: 10px 16px; }
+            .topbar-section { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     TOP BAR
+═══════════════════════════════════════════════════ -->
+<header class="topbar">
+    <div class="topbar-left">
+        <span class="topbar-logo">φ</span>
+        <div class="topbar-divider"></div>
+        <span class="topbar-section">Historia de la Filosofía · 2º Bachillerato</span>
+    </div>
+    <a class="btn-home" href="https://pacofilo.github.io/filoalquipir/" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Página principal
+    </a>
+</header>
+
+<!-- ═══════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════ -->
+<section class="hero">
+    <span class="hero-overline">Siglo XVIII · La Edad de la Razón</span>
+    <h1>El proyecto ilustrado:<br><em>potencia y límites de la razón</em></h1>
+    <p class="hero-subtitle">Nociones fundamentales sobre la Ilustración, sus ideales de progreso y emancipación, y la reflexión crítica sobre los alcances y fronteras de la razón humana.</p>
+    <div class="hero-meta">
+        <span>📚 Historia de la Filosofía</span>
+        <span>🎓 2º Bachillerato</span>
+        <span>🏫 IES Alquipir · Cehegín</span>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     INTRODUCTORY QUOTE
+═══════════════════════════════════════════════════ -->
+<div class="intro-quote reveal">
+    «La Ilustración es la salida del hombre de su autoculpable minoría de edad. La minoría de edad significa la incapacidad de servirse de su propio entendimiento sin la guía de otro.»
+    <cite>— Immanuel Kant, <em>¿Qué es la Ilustración?</em> (1784)</cite>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 1: Context — opens in modal
+═══════════════════════════════════════════════════ -->
+<div class="content">
+
+    <div class="section-block reveal">
+        <div class="section-block-header">
+            <div class="section-number">01</div>
+            <div class="section-label">
+                <span class="overline">Contexto e ideas clave</span>
+                <h2>¿Qué es la Ilustración?</h2>
+            </div>
+        </div>
+        <div class="text-content">
+            <p>La <strong>Ilustración</strong> (también llamada «Siglo de las Luces» o <em>Aufklärung</em>) es el movimiento intelectual, filosófico y cultural que recorre el siglo XVIII europeo. Su idea central es la confianza en la <strong>razón humana</strong> como instrumento de conocimiento, de progreso moral y de transformación social. Frente a la tradición, la superstición y el argumento de autoridad, los ilustrados proponen someter todo a examen racional.</p>
+            <p>Pulsa en cada tarjeta para profundizar en los contenidos:</p>
+        </div>
+    </div>
+
+    <!-- ─── CARDS: open modals ─── -->
+    <div class="cards-grid">
+
+        <button class="card-btn blue reveal" onclick="openModal('modal-contexto')">
+            <span class="card-icon">🌍</span>
+            <span class="card-title">El contexto histórico</span>
+            <span class="card-desc">La Europa del siglo XVIII: del Antiguo Régimen a las revoluciones. Antecedentes y condiciones de posibilidad.</span>
+            <span class="card-arrow">→</span>
+        </button>
+
+        <button class="card-btn green reveal" onclick="openModal('modal-razon')">
+            <span class="card-icon">💡</span>
+            <span class="card-title">La razón ilustrada</span>
+            <span class="card-desc">Qué entienden los ilustrados por «razón»: sus rasgos, funciones y aspiraciones universales.</span>
+            <span class="card-arrow">→</span>
+        </button>
+
+        <button class="card-btn purple reveal" onclick="openModal('modal-temas')">
+            <span class="card-icon">⚖️</span>
+            <span class="card-title">Grandes temas ilustrados</span>
+            <span class="card-desc">Progreso, libertad, tolerancia, educación, separación de poderes, derechos naturales.</span>
+            <span class="card-arrow">→</span>
+        </button>
+
+    </div>
+
+    <!-- ─── SECTION 2: sub-pages ─── -->
+    <div class="section-block reveal">
+        <div class="section-block-header">
+            <div class="section-number">02</div>
+            <div class="section-label">
+                <span class="overline">Pensadores y debates</span>
+                <h2>Potencia y límites de la razón</h2>
+            </div>
+        </div>
+        <div class="text-content">
+            <p>El proyecto ilustrado no fue un bloque monolítico. Dentro de él conviven posturas optimistas sobre las capacidades de la razón con reflexiones críticas que señalan sus fronteras y peligros. Explora cada sección:</p>
+        </div>
+    </div>
+
+    <div class="cards-grid">
+
+        <button class="card-btn accent reveal" onclick="openPage('page-pensadores')">
+            <span class="card-icon">🧠</span>
+            <span class="card-title">Los pensadores clave</span>
+            <span class="card-desc">Kant, Voltaire, Rousseau, Montesquieu, Hume, Diderot y D'Alembert: sus aportaciones esenciales.</span>
+            <span class="card-arrow">→</span>
+        </button>
+
+        <button class="card-btn gold reveal" onclick="openPage('page-potencia')">
+            <span class="card-icon">🔥</span>
+            <span class="card-title">La potencia de la razón</span>
+            <span class="card-desc">Ciencia, emancipación, progreso, derechos: todo lo que la razón ilustrada se propone conquistar.</span>
+            <span class="card-arrow">→</span>
+        </button>
+
+        <button class="card-btn blue reveal" onclick="openPage('page-limites')">
+            <span class="card-icon">🚧</span>
+            <span class="card-title">Los límites de la razón</span>
+            <span class="card-desc">La crítica kantiana, el sentimiento en Rousseau y Hume, la dialéctica de la Ilustración.</span>
+            <span class="card-arrow">→</span>
+        </button>
+
+        <button class="card-btn green reveal" onclick="openModal('modal-legado')">
+            <span class="card-icon">🏛️</span>
+            <span class="card-title">Legado y actualidad</span>
+            <span class="card-desc">¿Sigue vigente el proyecto ilustrado? Modernidad, posmodernidad y debates contemporáneos.</span>
+            <span class="card-arrow">→</span>
+        </button>
+
+    </div>
+
+    <!-- ─── SECTION 3: Vocabulary ─── -->
+    <div class="section-block reveal">
+        <div class="section-block-header">
+            <div class="section-number">03</div>
+            <div class="section-label">
+                <span class="overline">Para repasar</span>
+                <h2>Conceptos fundamentales</h2>
+            </div>
+        </div>
+        <div class="text-content">
+            <p>Antes de participar en el foro, asegúrate de comprender estos términos clave:</p>
+        </div>
+    </div>
+
+    <div class="cards-grid">
+        <button class="card-btn purple reveal" onclick="openModal('modal-conceptos')">
+            <span class="card-icon">📖</span>
+            <span class="card-title">Glosario de conceptos</span>
+            <span class="card-desc">Definiciones de los términos esenciales de la Ilustración para preparar el debate.</span>
+            <span class="card-arrow">→</span>
+        </button>
+
+        <button class="card-btn accent reveal" onclick="openModal('modal-preguntas')">
+            <span class="card-icon">❓</span>
+            <span class="card-title">Preguntas para el foro</span>
+            <span class="card-desc">Cuestiones de reflexión para orientar tu participación en Kialo Edu.</span>
+            <span class="card-arrow">→</span>
+        </button>
+    </div>
+
+</div><!-- /content -->
+
+<!-- ═══════════════════════════════════════════════════
+     DIVIDER
+═══════════════════════════════════════════════════ -->
+<div class="divider"><hr class="divider-line"></div>
+
+<!-- ═══════════════════════════════════════════════════
+     KIALO EDU / FORO SECTION
+═══════════════════════════════════════════════════ -->
+<div class="foro-section reveal">
+    <div class="foro-card">
+        <div class="foro-card-image">
+            <!-- Kialo Edu logo as inline SVG recreation -->
+            <svg width="180" height="48" viewBox="0 0 180 48" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                    <!-- Signal icon -->
+                    <path d="M12 24 Q12 14 22 10" stroke="#4A9EDB" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <path d="M12 24 Q12 17 20 14" stroke="#4A9EDB" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <path d="M12 24 Q12 20 18 18" stroke="#4A9EDB" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <path d="M12 24 L16 22" stroke="#4A9EDB" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <circle cx="12" cy="24" r="3" fill="#4A9EDB"/>
+                    <!-- Text "kialo" -->
+                    <text x="32" y="30" font-family="'DM Sans', sans-serif" font-size="24" font-weight="700" fill="#2D2B28">kialo</text>
+                    <!-- Text "edu" -->
+                    <text x="105" y="30" font-family="'DM Sans', sans-serif" font-size="24" font-weight="400" fill="#6B6560">edu</text>
+                </g>
+            </svg>
+        </div>
+        <div class="foro-card-text">
+            <h3>Participa en el foro de debate</h3>
+            <p>Tras revisar los contenidos de esta página, participarás en un foro de discusión en <strong>Kialo Edu</strong> sobre las potencias y los límites de la razón ilustrada.</p>
+            <ul class="step-list">
+                <li>
+                    <span class="step-number">1</span>
+                    <span>Lee atentamente todos los contenidos de esta web.</span>
+                </li>
+                <li>
+                    <span class="step-number">2</span>
+                    <span>Entra en <strong>Google Classroom</strong> con tu cuenta del centro.</span>
+                </li>
+                <li>
+                    <span class="step-number">3</span>
+                    <span>En Classroom encontrarás el <strong>enlace al foro de Kialo Edu</strong> para participar en el debate.</span>
+                </li>
+            </ul>
+            <a class="btn-classroom" href="https://classroom.google.com" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                Ir a Google Classroom
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════ -->
+<div class="divider"><hr class="divider-line"></div>
+<footer class="footer">
+    <div class="footer-phi">φ</div>
+    <p>Departamento de Filosofía · <a href="https://pacofilo.github.io/filoalquipir/" target="_blank">IES Alquipir</a> · Cehegín, Murcia<br>Francisco Jiménez Amor</p>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     MODALS
+═══════════════════════════════════════════════════════════════════ -->
+
+<!-- MODAL: Contexto histórico -->
+<div class="modal-overlay" id="modal-contexto">
+    <div class="modal-box">
+        <div class="modal-topbar">
+            <span class="modal-topbar-title">El contexto histórico</span>
+            <div class="modal-topbar-actions">
+                <button class="btn-modal-action" onclick="toggleFullscreen(this)" title="Pantalla completa">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                </button>
+                <button class="btn-modal-action" onclick="closeModal('modal-contexto')" title="Cerrar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="modal-content">
+            <h3>La Europa del siglo XVIII: del Antiguo Régimen a la Modernidad</h3>
+
+            <h4>El Antiguo Régimen como punto de partida</h4>
+            <p>La Ilustración surge como respuesta crítica al <strong>Antiguo Régimen</strong>, es decir, al sistema político, social y económico que domina Europa entre los siglos XVI y XVIII. Este sistema se caracteriza por:</p>
+            <ul>
+                <li><strong>Monarquía absoluta:</strong> el rey concentra todo el poder y lo legitima por derecho divino.</li>
+                <li><strong>Sociedad estamental:</strong> la sociedad se divide en estamentos cerrados (nobleza, clero y tercer estado) con derechos desiguales de nacimiento.</li>
+                <li><strong>Economía agraria y mercantilista:</strong> la riqueza se basa en la tierra y en el control del comercio colonial.</li>
+                <li><strong>Autoridad de la tradición y la Iglesia:</strong> la religión y la costumbre son las fuentes principales de legitimidad.</li>
+            </ul>
+
+            <h4>Antecedentes intelectuales</h4>
+            <p>La Ilustración no surge de la nada. Tiene precedentes decisivos en los siglos XVI y XVII:</p>
+            <ul>
+                <li><strong>La Revolución Científica</strong> (Copérnico, Galileo, Newton): demuestra que la razón y la observación pueden descubrir las leyes de la naturaleza, sin recurrir a la autoridad eclesiástica.</li>
+                <li><strong>El racionalismo</strong> (Descartes, Spinoza, Leibniz): confía en la capacidad de la razón para alcanzar verdades universales.</li>
+                <li><strong>El empirismo</strong> (Locke, Hume): vincula el conocimiento a la experiencia sensible y cuestiona las ideas innatas.</li>
+                <li><strong>La filosofía política moderna</strong> (Hobbes, Locke): plantea el origen del poder político en un contrato social, no en la voluntad divina.</li>
+            </ul>
+
+            <h4>¿Dónde se desarrolla?</h4>
+            <p>Aunque la Ilustración tiene alcance europeo, sus focos principales son:</p>
+
+            <div class="concept-grid">
+                <div class="concept-item">
+                    <strong>🇫🇷 Francia</strong>
+                    <span>Centro neurálgico con la <em>Encyclopédie</em>, los <em>philosophes</em> y los salones. Voltaire, Rousseau, Diderot, Montesquieu, D'Alembert.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>🇬🇧 Gran Bretaña</strong>
+                    <span>Cuna del empirismo. Locke, Hume, Adam Smith. Influencia del parlamentarismo inglés.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>🇩🇪 Alemania</strong>
+                    <span>La <em>Aufklärung</em>. Kant como culminación filosófica. Federico II de Prusia como «déspota ilustrado».</span>
+                </div>
+                <div class="concept-item">
+                    <strong>🇪🇸 España</strong>
+                    <span>Ilustración tardía y moderada. Feijoo, Jovellanos, Campomanes. Reformismo borbónico.</span>
+                </div>
+            </div>
+
+            <h4>La culminación: la Revolución Francesa (1789)</h4>
+            <p>El movimiento ilustrado desemboca políticamente en la <strong>Revolución Francesa</strong>, que pone fin al Antiguo Régimen en Francia y proclama los principios de <strong>libertad, igualdad y fraternidad</strong>. La <em>Declaración de los Derechos del Hombre y del Ciudadano</em> (1789) traduce a lenguaje jurídico las ideas de los filósofos ilustrados.</p>
+
+            <div class="highlight-box">
+                <strong>Idea clave:</strong> La Ilustración no es solo un movimiento intelectual: es un programa de transformación de la sociedad entera a partir de la razón.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: La razón ilustrada -->
+<div class="modal-overlay" id="modal-razon">
+    <div class="modal-box">
+        <div class="modal-topbar">
+            <span class="modal-topbar-title">La razón ilustrada</span>
+            <div class="modal-topbar-actions">
+                <button class="btn-modal-action" onclick="toggleFullscreen(this)" title="Pantalla completa">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                </button>
+                <button class="btn-modal-action" onclick="closeModal('modal-razon')" title="Cerrar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="modal-content">
+            <h3>¿Qué entienden los ilustrados por «razón»?</h3>
+
+            <p>La <strong>razón ilustrada</strong> no es una razón abstracta y desconectada del mundo: es una facultad humana aplicada a todos los ámbitos de la vida. Sus rasgos fundamentales son:</p>
+
+            <h4>1. Razón autónoma</h4>
+            <p>La razón se emancipa de toda tutela exterior. El lema kantiano <em>Sapere aude!</em> («¡Atrévete a pensar por ti mismo!») resume esta aspiración: cada individuo debe usar su propia capacidad de juicio sin depender de autoridades externas (la Iglesia, la tradición, el monarca).</p>
+
+            <h4>2. Razón crítica</h4>
+            <p>La razón ilustrada es ante todo <strong>crítica</strong>: somete a examen todos los saberes, creencias e instituciones heredados. Nada queda al margen del tribunal de la razón. Como dirá Kant, se trata de la «época de la crítica, a la que todo debe someterse».</p>
+
+            <h4>3. Razón universal</h4>
+            <p>Los ilustrados creen que la razón es <strong>la misma en todos los seres humanos</strong>, independientemente de su origen, cultura o condición social. Esto fundamenta la idea de igualdad natural y de derechos universales.</p>
+
+            <h4>4. Razón secular</h4>
+            <p>Se produce un proceso de <strong>secularización</strong>: la razón sustituye a la fe como criterio de verdad y de legitimidad. Esto no significa necesariamente ateísmo (muchos ilustrados son deístas), sino la separación entre las esferas religiosa y racional-política.</p>
+
+            <h4>5. Razón instrumental y práctica</h4>
+            <p>La razón no solo contempla: <strong>transforma</strong>. Los ilustrados esperan que el uso de la razón conduzca al <strong>progreso</strong> material (ciencia y técnica), moral (educación y virtud) y político (libertad e igualdad jurídica).</p>
+
+            <div class="quote-box">
+                «La razón es para el filósofo lo que la gracia es para el cristiano. La gracia mueve al cristiano a obrar; la razón mueve al filósofo.»
+                <cite>— César Chesneau Du Marsais, artículo «Philosophe» de la <em>Encyclopédie</em></cite>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Para el debate:</strong> ¿Es posible —y deseable— someter absolutamente todo al tribunal de la razón? ¿Hay dimensiones de la vida humana que escapan legítimamente al análisis racional?
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: Grandes temas ilustrados -->
+<div class="modal-overlay" id="modal-temas">
+    <div class="modal-box">
+        <div class="modal-topbar">
+            <span class="modal-topbar-title">Grandes temas ilustrados</span>
+            <div class="modal-topbar-actions">
+                <button class="btn-modal-action" onclick="toggleFullscreen(this)" title="Pantalla completa">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                </button>
+                <button class="btn-modal-action" onclick="closeModal('modal-temas')" title="Cerrar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="modal-content">
+            <h3>Los grandes ejes temáticos de la Ilustración</h3>
+
+            <h4>1. El progreso</h4>
+            <p>Los ilustrados creen que la humanidad avanza de forma continua hacia un estado mejor gracias al desarrollo de la ciencia, la educación y las instituciones racionales. Condorcet, en su <em>Bosquejo de un cuadro histórico de los progresos del espíritu humano</em> (1795), traza una historia lineal de la humanidad como perfeccionamiento constante.</p>
+
+            <h4>2. La libertad</h4>
+            <p>La libertad se entiende en un triple sentido: <strong>libertad de pensamiento</strong> (contra la censura y el dogma), <strong>libertad política</strong> (contra el absolutismo) y <strong>libertad económica</strong> (contra los privilegios estamentales y las trabas al comercio). Voltaire la defiende con su célebre lucha contra la intolerancia religiosa.</p>
+
+            <h4>3. La tolerancia</h4>
+            <p>Tras siglos de guerras de religión, los ilustrados defienden la <strong>tolerancia religiosa</strong> y la convivencia pacífica entre diferentes creencias. El <em>Tratado sobre la tolerancia</em> de Voltaire (1763) es un hito en esta lucha.</p>
+
+            <h4>4. La educación</h4>
+            <p>La <strong>educación</strong> es el instrumento fundamental del proyecto ilustrado: solo mediante la formación racional de los ciudadanos puede construirse una sociedad justa y libre. Rousseau, en el <em>Emilio</em> (1762), propone una pedagogía basada en el desarrollo natural del niño frente a la educación autoritaria.</p>
+
+            <h4>5. La separación de poderes</h4>
+            <p>Montesquieu, en <em>El espíritu de las leyes</em> (1748), establece que la libertad política solo es posible si los poderes legislativo, ejecutivo y judicial están separados e independientes. Esta idea es la base del constitucionalismo moderno.</p>
+
+            <h4>6. Los derechos naturales</h4>
+            <p>Los ilustrados heredan de Locke la idea de que existen <strong>derechos naturales</strong> anteriores al Estado (vida, libertad, propiedad) que ningún poder legítimo puede violar. Esta idea se plasmará en la <em>Declaración de Derechos del Hombre y del Ciudadano</em> (1789).</p>
+
+            <h4>7. La Encyclopédie</h4>
+            <p>Dirigida por Diderot y D'Alembert (1751-1772), la <em>Encyclopédie</em> es la empresa cultural más ambiciosa de la Ilustración: un diccionario razonado de las ciencias, las artes y los oficios que pretende reunir <strong>todo el saber humano</strong> y ponerlo al alcance del público.</p>
+
+            <div class="highlight-box">
+                <strong>Recuerda:</strong> Todos estos temas están conectados por una misma convicción: la razón humana puede y debe transformar la realidad social, política y moral. El «proyecto ilustrado» es, en el fondo, un proyecto de <strong>emancipación mediante la razón</strong>.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: Legado y actualidad -->
+<div class="modal-overlay" id="modal-legado">
+    <div class="modal-box">
+        <div class="modal-topbar">
+            <span class="modal-topbar-title">Legado y actualidad</span>
+            <div class="modal-topbar-actions">
+                <button class="btn-modal-action" onclick="toggleFullscreen(this)" title="Pantalla completa">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                </button>
+                <button class="btn-modal-action" onclick="closeModal('modal-legado')" title="Cerrar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="modal-content">
+            <h3>¿Sigue vigente el proyecto ilustrado?</h3>
+
+            <h4>La herencia positiva</h4>
+            <p>Gran parte de las instituciones, valores y derechos que hoy consideramos irrenunciables son herederos directos de la Ilustración:</p>
+            <ul>
+                <li>Los <strong>Derechos Humanos</strong> universales.</li>
+                <li>La <strong>democracia representativa</strong> y la separación de poderes.</li>
+                <li>La <strong>educación pública</strong> y obligatoria.</li>
+                <li>La <strong>libertad de expresión</strong>, de prensa y de conciencia.</li>
+                <li>El <strong>Estado de derecho</strong>: nadie está por encima de la ley.</li>
+                <li>La confianza en la <strong>ciencia</strong> como motor de progreso.</li>
+            </ul>
+
+            <h4>Las críticas al proyecto ilustrado</h4>
+            <p>Sin embargo, a lo largo de los siglos XIX y XX, diversos pensadores han señalado las <strong>sombras</strong> de la Ilustración:</p>
+            <ul>
+                <li><strong>Marx:</strong> la «razón ilustrada» enmascara intereses de clase. La igualdad formal oculta la desigualdad real.</li>
+                <li><strong>Nietzsche:</strong> la razón es una forma disfrazada de voluntad de poder. Los «valores ilustrados» son una moral de esclavos secularizada.</li>
+                <li><strong>Horkheimer y Adorno</strong> (<em>Dialéctica de la Ilustración</em>, 1944): la razón instrumental, desvinculada de fines éticos, puede conducir a la barbarie (Auschwitz, la bomba atómica). La Ilustración, al pretender dominar la naturaleza, acaba dominando también al ser humano.</li>
+                <li><strong>Posmodernismo</strong> (Lyotard, Foucault): desconfianza hacia los «grandes relatos» de la modernidad. La razón universal enmascara relaciones de poder y excluye a los diferentes.</li>
+                <li><strong>Feminismo:</strong> el sujeto «universal» ilustrado era en realidad un varón blanco, europeo y propietario. Las mujeres y los pueblos colonizados quedaron excluidos de la promesa de igualdad.</li>
+            </ul>
+
+            <h4>El debate hoy</h4>
+            <p>¿Debemos defender el proyecto ilustrado o superarlo? ¿Es posible una «Ilustración de la Ilustración» que corrija sus errores sin renunciar a sus logros? Pensadores como <strong>Habermas</strong> defienden que la modernidad es un «proyecto inacabado» que debe completarse, no abandonarse.</p>
+
+            <div class="quote-box">
+                «La modernidad: un proyecto inacabado.»
+                <cite>— Jürgen Habermas, conferencia de 1980</cite>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Para reflexionar:</strong> ¿Puede la razón criticarse a sí misma? ¿Es la autocrítica racional la mejor prueba de la potencia de la razón o, por el contrario, la evidencia de sus límites?
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: Glosario de conceptos -->
+<div class="modal-overlay" id="modal-conceptos">
+    <div class="modal-box">
+        <div class="modal-topbar">
+            <span class="modal-topbar-title">Glosario de conceptos</span>
+            <div class="modal-topbar-actions">
+                <button class="btn-modal-action" onclick="toggleFullscreen(this)" title="Pantalla completa">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                </button>
+                <button class="btn-modal-action" onclick="closeModal('modal-conceptos')" title="Cerrar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="modal-content">
+            <h3>Conceptos esenciales de la Ilustración</h3>
+
+            <div class="concept-grid">
+                <div class="concept-item">
+                    <strong>Ilustración / Aufklärung</strong>
+                    <span>Movimiento intelectual del siglo XVIII que confía en la razón como instrumento de conocimiento y transformación social.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>Sapere aude!</strong>
+                    <span>«¡Atrévete a saber/pensar!» Lema de la Ilustración según Kant: usar el propio entendimiento sin la guía de otro.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>Razón crítica</strong>
+                    <span>Uso de la razón para examinar y cuestionar todas las creencias, instituciones y saberes heredados.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>Razón instrumental</strong>
+                    <span>Razón orientada al cálculo de medios eficaces para lograr fines. Criticada por Horkheimer y Adorno por prescindir de fines éticos.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>Contrato social</strong>
+                    <span>Teoría según la cual la legitimidad del poder político se funda en un pacto libre entre los ciudadanos, no en el derecho divino.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>Derechos naturales</strong>
+                    <span>Derechos inherentes a la persona (vida, libertad, propiedad) anteriores al Estado y que este debe respetar y proteger.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>Separación de poderes</strong>
+                    <span>Principio formulado por Montesquieu: dividir el poder en legislativo, ejecutivo y judicial para evitar la tiranía.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>Deísmo</strong>
+                    <span>Posición religiosa que acepta la existencia de Dios por la razón, pero rechaza las religiones reveladas y las instituciones eclesiásticas.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>Encyclopédie</strong>
+                    <span>Obra monumental (1751-1772) dirigida por Diderot y D'Alembert que reúne todo el saber de la época bajo criterios racionales.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>Progreso</strong>
+                    <span>Convicción de que la humanidad avanza linealmente hacia un estado mejor gracias a la ciencia, la educación y la razón.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>Secularización</strong>
+                    <span>Proceso por el cual la razón sustituye a la religión como criterio de verdad y legitimidad en la vida pública.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>Despotismo ilustrado</strong>
+                    <span>Forma de gobierno en la que un monarca absoluto aplica reformas inspiradas en la Ilustración sin renunciar al poder. Lema: «Todo para el pueblo, pero sin el pueblo».</span>
+                </div>
+                <div class="concept-item">
+                    <strong>Estado de naturaleza</strong>
+                    <span>Situación hipotética previa a la sociedad civil. En Hobbes es una «guerra de todos contra todos»; en Rousseau, un estado pacífico que la civilización corrompe.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>Voluntad general</strong>
+                    <span>Concepto de Rousseau: la voluntad del pueblo como cuerpo político orientada al bien común, distinta de la suma de voluntades particulares.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: Preguntas para el foro -->
+<div class="modal-overlay" id="modal-preguntas">
+    <div class="modal-box">
+        <div class="modal-topbar">
+            <span class="modal-topbar-title">Preguntas para el foro</span>
+            <div class="modal-topbar-actions">
+                <button class="btn-modal-action" onclick="toggleFullscreen(this)" title="Pantalla completa">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                </button>
+                <button class="btn-modal-action" onclick="closeModal('modal-preguntas')" title="Cerrar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="modal-content">
+            <h3>Cuestiones de reflexión para el foro Kialo Edu</h3>
+
+            <p>Las siguientes preguntas pueden servir de guía para tu participación en el debate. No se trata de responder a todas, sino de elegir aquellas que más te interesen y argumentar con rigor:</p>
+
+            <h4>Sobre la potencia de la razón</h4>
+            <ol>
+                <li>¿Tiene la razón humana capacidad para resolver todos los problemas sociales y morales? ¿O existen problemas que escapan a su alcance?</li>
+                <li>¿Es la ciencia el mejor instrumento del que dispone la humanidad para el progreso? ¿Progreso en qué sentido?</li>
+                <li>¿Pueden los derechos humanos universales fundarse exclusivamente en la razón, o necesitan algún otro tipo de fundamento (religioso, emocional, cultural)?</li>
+            </ol>
+
+            <h4>Sobre los límites de la razón</h4>
+            <ol start="4">
+                <li>¿Tenía razón Rousseau al afirmar que el progreso científico y técnico no mejora necesariamente la moralidad de las personas?</li>
+                <li>¿Es la razón neutral o está condicionada por intereses de clase, género, cultura? ¿Podemos hablar realmente de una «razón universal»?</li>
+                <li>¿Puede la razón dar cuenta de las emociones, la fe o la experiencia estética, o hay dimensiones humanas que le son inaccesibles?</li>
+            </ol>
+
+            <h4>Sobre la vigencia del proyecto ilustrado</h4>
+            <ol start="7">
+                <li>¿Vivimos todavía en la Ilustración o ya la hemos superado? ¿Somos más o menos racionales que en el siglo XVIII?</li>
+                <li>¿Son las redes sociales y la posverdad una prueba del fracaso del proyecto ilustrado o un problema que solo puede resolverse con más razón y más educación?</li>
+                <li>¿Es compatible defender los valores ilustrados (libertad, igualdad, razón) y al mismo tiempo reconocer la diversidad cultural y la diferencia?</li>
+            </ol>
+
+            <div class="highlight-box">
+                <strong>Recuerda:</strong> En Kialo Edu el objetivo es <strong>argumentar</strong>, no simplemente opinar. Cada intervención debe incluir razones, ejemplos o referencias a los autores estudiados. Respeta las aportaciones de tus compañeros y contribuye al diálogo constructivo.
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     FULL PAGES (overlays)
+═══════════════════════════════════════════════════════════════════ -->
+
+<!-- PAGE: Pensadores clave -->
+<div class="page-overlay" id="page-pensadores">
+    <div class="page-topbar">
+        <div class="page-topbar-left">
+            <button class="btn-back" onclick="closePage('page-pensadores')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+                Volver
+            </button>
+            <span class="modal-topbar-title">Los pensadores clave</span>
+        </div>
+    </div>
+    <div class="page-content">
+        <h2>Los pensadores clave de la Ilustración</h2>
+
+        <div class="thinker-card">
+            <h4>Immanuel Kant (1724-1804)</h4>
+            <p class="dates">Königsberg, Prusia</p>
+            <p>Kant representa la <strong>culminación filosófica</strong> de la Ilustración. Su pregunta central es: ¿qué puede conocer la razón y dónde están sus límites?</p>
+            <p>En la <em>Crítica de la razón pura</em> (1781) establece que la razón puede conocer los fenómenos (las cosas tal como se nos aparecen), pero no las «cosas en sí» (noúmenos): Dios, el alma y el mundo como totalidad escapan al conocimiento teórico. Sin embargo, en la <em>Crítica de la razón práctica</em> (1788) muestra que la razón tiene un uso práctico-moral: es capaz de formular leyes morales universales (el imperativo categórico).</p>
+            <p>En su texto <em>¿Qué es la Ilustración?</em> (1784) define el movimiento como la «salida del hombre de su autoculpable minoría de edad» y proclama el lema <em>Sapere aude!</em></p>
+        </div>
+
+        <div class="thinker-card">
+            <h4>Voltaire (François-Marie Arouet, 1694-1778)</h4>
+            <p class="dates">París, Francia</p>
+            <p>Voltaire es el <strong>gran divulgador</strong> de las ideas ilustradas y un infatigable luchador contra la intolerancia religiosa, el fanatismo y la superstición. Es deísta: cree en un Dios creador al que se llega por la razón, pero rechaza las religiones reveladas y la autoridad eclesiástica.</p>
+            <p>Su <em>Tratado sobre la tolerancia</em> (1763) y el <em>Diccionario filosófico</em> (1764) son obras clave. Usó la ironía y la sátira como armas intelectuales. Defendió la libertad de expresión, el empirismo newtoniano frente a la metafísica cartesiana, y la reforma de la justicia penal.</p>
+        </div>
+
+        <div class="thinker-card">
+            <h4>Jean-Jacques Rousseau (1712-1778)</h4>
+            <p class="dates">Ginebra, Suiza</p>
+            <p>Rousseau es la <strong>voz crítica dentro de la propia Ilustración</strong>. En sus dos <em>Discursos</em> (1750 y 1755), sostiene que las ciencias y las artes no han mejorado moralmente a la humanidad, sino que la han corrompido: el «hombre natural» era bueno y libre; la civilización lo ha encadenado.</p>
+            <p>En <em>El contrato social</em> (1762) propone que la legitimidad política reside en la <strong>voluntad general</strong> del pueblo. En el <em>Emilio</em> (1762) diseña un modelo educativo basado en la naturaleza del niño. Rousseau revaloriza el <strong>sentimiento</strong> frente al intelectualismo ilustrado y es un precursor del Romanticismo.</p>
+        </div>
+
+        <div class="thinker-card">
+            <h4>Montesquieu (Charles-Louis de Secondat, 1689-1755)</h4>
+            <p class="dates">Burdeos, Francia</p>
+            <p>Su obra principal, <em>El espíritu de las leyes</em> (1748), es un estudio comparativo de los sistemas políticos. Montesquieu establece el principio de la <strong>separación de poderes</strong> (legislativo, ejecutivo y judicial) como garantía de la libertad política. Distingue tres formas de gobierno: república, monarquía y despotismo, cada una con su «principio» motor (virtud, honor y miedo, respectivamente).</p>
+            <p>Su influencia en el constitucionalismo moderno es enorme: la Constitución de los Estados Unidos (1787) y la <em>Declaración de los Derechos del Hombre</em> (1789) aplican directamente sus ideas.</p>
+        </div>
+
+        <div class="thinker-card">
+            <h4>David Hume (1711-1776)</h4>
+            <p class="dates">Edimburgo, Escocia</p>
+            <p>Hume representa la <strong>Ilustración británica</strong> y el empirismo radical. Sostiene que todo conocimiento procede de la experiencia sensible y que las ideas que no pueden reducirse a impresiones carecen de fundamento. Su crítica a la causalidad (no podemos conocer la conexión necesaria entre causa y efecto, solo la costumbre de su asociación) sacude los cimientos de la metafísica racionalista.</p>
+            <p>En moral, Hume defiende que la razón es «esclava de las pasiones»: no es la razón la que nos mueve a actuar, sino el sentimiento. Esta posición marca un <strong>límite fundamental</strong> a la razón ilustrada y anticipa debates contemporáneos sobre la relación entre razón y emoción.</p>
+        </div>
+
+        <div class="thinker-card">
+            <h4>Denis Diderot (1713-1784) y Jean le Rond d'Alembert (1717-1783)</h4>
+            <p class="dates">Francia</p>
+            <p>Son los directores de la <em>Encyclopédie ou Dictionnaire raisonné des sciences, des arts et des métiers</em> (1751-1772), la mayor empresa editorial de la Ilustración. La <em>Encyclopédie</em> reúne más de 70.000 artículos redactados por los principales pensadores de la época y pretende <strong>sistematizar todo el saber humano</strong> bajo criterios racionales, liberándolo de la tutela religiosa.</p>
+            <p>Diderot, además, desarrolla un <strong>materialismo ateo</strong> y escribe obras de filosofía, teatro y crítica de arte que anticipan muchas ideas modernas. D'Alembert, matemático y filósofo, redacta el célebre <em>Discurso preliminar</em> de la <em>Encyclopédie</em>, donde traza un mapa del conocimiento humano basado en las facultades de la mente (memoria, razón e imaginación).</p>
+        </div>
+
+        <div class="highlight-box">
+            <strong>Idea para el debate:</strong> ¿Qué ilustrado te parece más «actual»? ¿Quién tenía más razón: Voltaire (la razón libera) o Rousseau (la razón puede corromper)?
+        </div>
+    </div>
+</div>
+
+<!-- PAGE: Potencia de la razón -->
+<div class="page-overlay" id="page-potencia">
+    <div class="page-topbar">
+        <div class="page-topbar-left">
+            <button class="btn-back" onclick="closePage('page-potencia')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+                Volver
+            </button>
+            <span class="modal-topbar-title">La potencia de la razón</span>
+        </div>
+    </div>
+    <div class="page-content">
+        <h2>La potencia de la razón</h2>
+        <p>Los ilustrados están convencidos de que la razón, correctamente aplicada, puede transformar todos los ámbitos de la vida humana. Veamos las principales dimensiones de esta «potencia racional».</p>
+
+        <h3>1. La razón y la ciencia</h3>
+        <p>El modelo de la ciencia newtoniana es el gran referente de la Ilustración. Newton ha demostrado que unas pocas leyes matemáticas (la gravitación universal) explican el funcionamiento del cosmos entero. Si la razón puede descifrar las leyes de la naturaleza, ¿por qué no también las leyes de la sociedad, la moral y la política?</p>
+        <p>Los ilustrados intentan aplicar el <strong>método científico</strong> (observación, hipótesis, experimentación) a todos los campos del saber: la economía (Adam Smith), la historia (Gibbon, Voltaire), la psicología (Condillac), la política (Montesquieu) e incluso la religión (análisis crítico de los textos sagrados).</p>
+
+        <h3>2. La razón y la emancipación</h3>
+        <p>La razón es, ante todo, una fuerza <strong>liberadora</strong>. Libera de:</p>
+        <ul>
+            <li>La <strong>superstición</strong> y el fanatismo religioso.</li>
+            <li>La <strong>ignorancia</strong>, mediante la educación y la difusión del saber.</li>
+            <li>La <strong>tiranía política</strong>, al demostrar que el poder no viene de Dios sino del consentimiento de los gobernados.</li>
+            <li>La <strong>desigualdad de nacimiento</strong>, al afirmar la igualdad natural de todos los seres humanos.</li>
+        </ul>
+
+        <div class="quote-box">
+            «Los hombres nacen y permanecen libres e iguales en derechos.»
+            <cite>— Artículo 1 de la <em>Declaración de los Derechos del Hombre y del Ciudadano</em> (1789)</cite>
+        </div>
+
+        <h3>3. La razón y el progreso</h3>
+        <p>La idea de <strong>progreso</strong> es quizá la más característica de la Ilustración. A diferencia de las concepciones cíclicas de la historia (grecorromanas) o de la visión providencialista cristiana, los ilustrados conciben la historia como un <strong>avance lineal e indefinido</strong> de la humanidad hacia un estado mejor.</p>
+        <p>Condorcet, en su <em>Bosquejo</em>, identifica diez épocas de la historia humana, cada una más racional y libre que la anterior, y predice un futuro de igualdad, paz y perfeccionamiento indefinido. Turgot afirma que la humanidad avanza continuamente, aunque con retrocesos parciales, hacia una mayor racionalidad.</p>
+
+        <h3>4. La razón y los derechos</h3>
+        <p>La noción de <strong>derechos naturales e inalienables</strong> es una de las aportaciones más duraderas de la Ilustración. Si la razón descubre que todos los seres humanos comparten una misma naturaleza racional, entonces todos poseen los mismos derechos fundamentales, independientemente de su nacimiento, religión o nación.</p>
+        <p>Esta idea se traduce políticamente en:</p>
+        <ul>
+            <li>La <em>Bill of Rights</em> inglesa (1689).</li>
+            <li>La <em>Declaración de Independencia</em> de los Estados Unidos (1776).</li>
+            <li>La <em>Declaración de los Derechos del Hombre y del Ciudadano</em> (1789).</li>
+        </ul>
+
+        <h3>5. La razón y la moral</h3>
+        <p>Kant demuestra que la razón no solo conoce: también <strong>legisla moralmente</strong>. El <strong>imperativo categórico</strong> («Obra de tal modo que la máxima de tu acción pueda convertirse en ley universal») es una ley moral descubierta por la razón pura práctica, válida para todo ser racional. La moral ya no depende de mandamientos divinos ni de la costumbre, sino de la legislación racional del sujeto autónomo.</p>
+
+        <div class="highlight-box">
+            <strong>En síntesis:</strong> La «potencia de la razón» consiste en su capacidad para conocer las leyes de la naturaleza, liberar al ser humano de toda forma de dominación irracional, fundamentar derechos universales y establecer principios morales autónomos.
+        </div>
+    </div>
+</div>
+
+<!-- PAGE: Límites de la razón -->
+<div class="page-overlay" id="page-limites">
+    <div class="page-topbar">
+        <div class="page-topbar-left">
+            <button class="btn-back" onclick="closePage('page-limites')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+                Volver
+            </button>
+            <span class="modal-topbar-title">Los límites de la razón</span>
+        </div>
+    </div>
+    <div class="page-content">
+        <h2>Los límites de la razón</h2>
+        <p>La reflexión sobre los <strong>límites de la razón</strong> no es una impugnación de la Ilustración desde fuera, sino que nace <em>dentro</em> del propio proyecto ilustrado. Varios de los grandes pensadores del siglo XVIII advierten que la razón tiene fronteras que no puede —o no debe— traspasar.</p>
+
+        <h3>1. Kant: la crítica de la razón pura</h3>
+        <p>La <em>Crítica de la razón pura</em> (1781) de Kant es, paradójicamente, <strong>el mayor elogio y la mayor limitación de la razón</strong> en la historia de la filosofía.</p>
+        <p>Kant distingue entre:</p>
+        <ul>
+            <li><strong>Fenómenos:</strong> las cosas tal como se nos aparecen, estructuradas por las formas a priori de la sensibilidad (espacio y tiempo) y las categorías del entendimiento (causalidad, sustancia, etc.). La razón puede conocer los fenómenos con certeza.</li>
+            <li><strong>Noúmenos (cosas en sí):</strong> la realidad tal como es independientemente de nuestra experiencia. Dios, la libertad, la inmortalidad del alma son ideas de la razón, pero no pueden ser conocidas teóricamente: sobrepasan los límites de la experiencia posible.</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>La paradoja kantiana:</strong> La razón tiene la «irresistible tendencia» a ir más allá de la experiencia y pretender conocer lo incondicionado (Dios, el alma, el cosmos como totalidad). Pero cuando lo intenta, cae en contradicciones insolubles (<strong>antinomias</strong>). La grandeza de la razón consiste en reconocer sus propios límites.
+        </div>
+
+        <h3>2. Hume: la razón como «esclava de las pasiones»</h3>
+        <p>Hume establece dos límites fundamentales:</p>
+        <p><strong>Límite epistemológico:</strong> Todo conocimiento procede de la experiencia. Las ideas que no se derivan de impresiones sensibles (como la idea de sustancia, de causalidad necesaria o de Dios) son ficticias o, al menos, no pueden justificarse racionalmente. La costumbre y el hábito, no la razón, fundamentan nuestra creencia en la causalidad.</p>
+        <p><strong>Límite moral:</strong> La razón sola no puede motivar la acción. Solo los sentimientos (las pasiones) nos mueven a actuar. La razón puede calcular los medios para satisfacer nuestros deseos, pero no puede determinar los fines. «La razón es, y solo debe ser, esclava de las pasiones» (<em>Tratado de la naturaleza humana</em>).</p>
+
+        <h3>3. Rousseau: la razón contra la naturaleza</h3>
+        <p>Rousseau plantea un límite radicalmente distinto: la razón y la civilización, lejos de mejorar al ser humano, pueden <strong>corromperlo</strong>.</p>
+        <p>En el <em>Discurso sobre las ciencias y las artes</em> (1750), sostiene que el progreso intelectual no va acompañado de progreso moral: las sociedades «ilustradas» son también las más hipócritas y desiguales. En el <em>Discurso sobre el origen de la desigualdad</em> (1755), afirma que el «estado de naturaleza» era superior moralmente al estado civilizado.</p>
+        <p>Para Rousseau, el <strong>sentimiento</strong> (la piedad natural, la conciencia moral como voz interior) es más fiable que la razón abstracta para guiar la conducta. La razón puede engañar; el corazón, no.</p>
+
+        <h3>4. La dialéctica de la Ilustración (Horkheimer y Adorno)</h3>
+        <p>Ya en el siglo XX, Horkheimer y Adorno (Escuela de Frankfurt) formulan la crítica más radical al proyecto ilustrado. En <em>Dialéctica de la Ilustración</em> (1944) sostienen que la razón ilustrada, al reducirse a <strong>razón instrumental</strong> (cálculo de medios para dominar la naturaleza), acaba convirtiéndose en instrumento de <strong>dominación sobre el propio ser humano</strong>.</p>
+        <p>La barbarie del siglo XX (guerras mundiales, totalitarismos, campos de exterminio, la bomba atómica) no es un accidente de la modernidad, sino una <strong>consecuencia interna</strong> de una razón que se ha reducido a puro cálculo técnico, desvinculada de fines éticos. La Ilustración, al querer desencadenar al hombre del mito, genera su propio mito: el mito del progreso ilimitado.</p>
+
+        <div class="quote-box">
+            «El mito es ya Ilustración; la Ilustración recae en mitología.»
+            <cite>— M. Horkheimer y T. W. Adorno, <em>Dialéctica de la Ilustración</em> (1944)</cite>
+        </div>
+
+        <a class="btn-ampliar" href="dialectica-ilustracion.html" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            Ampliar contenidos: La Dialéctica de la Ilustración
+        </a>
+
+        <h3>5. Síntesis: ¿razón sin límites?</h3>
+        <p>El propio proyecto ilustrado descubre que la razón:</p>
+        <ul>
+            <li>No puede conocer todo (Kant): las grandes preguntas metafísicas quedan fuera de su alcance teórico.</li>
+            <li>No puede motivar sola la acción moral (Hume): necesita de los sentimientos.</li>
+            <li>Puede corromper tanto como liberar (Rousseau): el progreso intelectual no garantiza el progreso moral.</li>
+            <li>Puede devenir instrumento de dominación (Horkheimer/Adorno): cuando se reduce a puro cálculo sin reflexión ética.</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>La pregunta decisiva:</strong> ¿Puede la razón autocriticarse de forma suficiente? ¿O necesita de algo que la trascienda (el sentimiento, la fe, la experiencia estética, la comunidad) para corregir sus propios excesos?
+        </div>
+    </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════════════ -->
+<script>
+// ── Reveal on scroll ──
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Modals ──
+function openModal(id) {
+    const overlay = document.getElementById(id);
+    overlay.style.display = 'flex';
+    requestAnimationFrame(() => overlay.classList.add('active'));
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+    const overlay = document.getElementById(id);
+    const box = overlay.querySelector('.modal-box');
+    box.classList.remove('fullscreen');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => { overlay.style.display = 'none'; }, 300);
+}
+
+function toggleFullscreen(btn) {
+    const box = btn.closest('.modal-box');
+    box.classList.toggle('fullscreen');
+    const isFS = box.classList.contains('fullscreen');
+    btn.innerHTML = isFS
+        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>'
+        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>';
+    btn.title = isFS ? 'Salir de pantalla completa' : 'Pantalla completa';
+}
+
+// Close modal clicking overlay background
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal(overlay.id);
+    });
+});
+
+// ── Full pages ──
+function openPage(id) {
+    const page = document.getElementById(id);
+    page.style.display = 'block';
+    requestAnimationFrame(() => page.classList.add('active'));
+    document.body.style.overflow = 'hidden';
+    page.scrollTop = 0;
+}
+
+function closePage(id) {
+    const page = document.getElementById(id);
+    page.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => { page.style.display = 'none'; }, 300);
+}
+
+// ── Escape key ──
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        // Close open modals
+        document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id));
+        // Close open pages
+        document.querySelectorAll('.page-overlay.active').forEach(p => closePage(p.id));
+    }
+});
+</script>
+
+</body>
+</html>
